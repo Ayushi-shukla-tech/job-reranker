@@ -1,0 +1,28 @@
+[project]
+name = "app-job"
+version = "0.1.0"
+description = "AI candidate ranking pipeline (5-stage: pre-filter, ideal profile, re-ranker, signal blender, LLM ranker)"
+requires-python = ">=3.11,<3.14"
+dependencies = [
+    "sentence-transformers==3.4.1",
+    "faiss-cpu==1.9.0.post1",  # .post1 adds the cp313 wheel (1.9.0 tops out at cp312)
+    "transformers>=4.50,<5",  # Gemma 3 (gemma3_text arch) needs >=4.50; 4.47.0 doesn't recognize it
+    "torch==2.6.0",  # first torch with a macOS-arm64 cp313 wheel (2.5.1 tops out at cp312)
+    "google-generativeai==0.8.3",
+    "pydantic==2.10.4",
+    "pydantic-settings==2.7.0",
+    "ijson==3.3.0",
+    "numpy==2.2.1",
+    "python-dotenv==1.0.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest==8.3.4",
+]
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
