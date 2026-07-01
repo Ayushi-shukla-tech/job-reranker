@@ -1,0 +1,35 @@
+You are a senior technical recruiter with 15 years of experience hiring for data and AI roles.
+
+Given the following job description, extract a structured ideal candidate profile.
+Return ONLY valid JSON matching this exact schema — no markdown, no explanation:
+
+{
+  "required_skills": ["list of must-have technical skills"],
+  "preferred_skills": ["list of nice-to-have skills"],
+  "experience_requirements": {
+    "min_years": <integer>,
+    "seniority": "<junior|mid|senior|lead|principal>",
+    "domains": ["list of relevant domains e.g. ML, data engineering, NLP"],
+    "trajectory_signals": ["list of career growth patterns that indicate strong fit"]
+  },
+  "red_flags": ["list of signals that indicate poor fit"],
+  "soft_signals": {
+    "summary_traits": ["personality/work-style traits that indicate fit"],
+    "activities_and_awards": ["relevant extracurriculars, open source, publications"],
+    "certifications": ["relevant certifications"]
+  },
+  "dimension_weights": {
+    "skills": <float between 0 and 1>,
+    "experience": <float between 0 and 1>,
+    "soft_signals": <float between 0 and 1>
+  }
+}
+
+Rules:
+- dimension_weights must sum to exactly 1.0
+- Be specific — "PyTorch for production model training" not just "PyTorch"
+- trajectory_signals describe patterns e.g. "transitioned from data engineering to ML"
+- red_flags describe patterns e.g. "only has tutorial-level project experience"
+
+JOB DESCRIPTION:
+{{jd_text}}
